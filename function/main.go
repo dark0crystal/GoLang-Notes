@@ -39,4 +39,12 @@ func main() {
 	// to call the function , you should add paranthesis to the end of the variable
 	test()
 
+	// another way to create and call a func
+
+	test2  := func(x int) int{
+		return x
+	}(5)
+
+	fmt.Printf("Hello , this value is from test2 func : %d \n" , test2)
+
 }
