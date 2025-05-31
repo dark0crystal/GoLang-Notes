@@ -23,5 +23,5 @@ func main(){
 
 
 	ChangeValue(&x)
-	fmt.Println("after x= ",x)
+	fmt.Println("after x= ",x)//after x=  777
 }
