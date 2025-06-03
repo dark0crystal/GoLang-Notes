@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
+
 	"github.com/joho/godotenv"
 )
 
@@ -42,11 +44,25 @@ func fetchWeather(lat, lon string) {
 }
 
 func main() {
-	
 	err := godotenv.Load("../.env")
 	if err != nil {
 		fmt.Println("Error loading .env file")
 	}
 
-	fetchWeather("25.28", "55.30")
+	// List of locations
+	locations := [][2]string{
+		{"25.28", "55.30"}, // Dubai
+		{"23.58", "58.40"}, // Muscat
+		{"21.42", "39.82"}, // Jeddah
+	}
+
+	start := time.Now() // Start time
+
+	for _, loc := range locations {
+		fetchWeather(loc[0], loc[1])
+	}
+
+	elapsed := time.Since(start) // End time
+
+	fmt.Printf("Total time taken: %s\n", elapsed)
 }
