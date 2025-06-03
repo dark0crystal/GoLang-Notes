@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"sync"
+	"time"
 
 	"github.com/joho/godotenv"
 )
@@ -50,7 +51,6 @@ func main() {
 		fmt.Println("Error loading .env file")
 	}
 
-	
 	locations := [][2]string{
 		{"25.28", "55.30"}, // Dubai
 		{"23.58", "58.40"}, // Muscat
@@ -59,13 +59,17 @@ func main() {
 
 	var wg sync.WaitGroup
 
+	start := time.Now() // Start timer
+
 	for _, loc := range locations {
 		wg.Add(1)
 		go fetchWeather(&wg, loc[0], loc[1])
 	}
 
 	wg.Wait()
+
+	elapsed := time.Since(start) // End timer
+
 	fmt.Println("All weather data fetched.")
+	fmt.Printf("Total time taken: %s\n", elapsed)
 }
-
-
