@@ -30,3 +30,29 @@ func TestSubtract(t *testing.T) {
 		t.Errorf("Subtract(10, 4) = %d; want %d", result, expected)
 	}
 }
+
+func TestMultiply(t *testing.T) {
+	result := Multiply(4, 5)
+	expected := 20
+	if result != expected {
+		t.Errorf("Multiply(4, 5) = %d; want %d", result, expected)
+	}
+}
+
+func TestDivide(t *testing.T) {
+	result, err := Divide(20, 4)
+	expected := 5
+	if err != nil {
+		t.Errorf("Divide(20, 4) returned error: %v", err)
+	}
+	if result != expected {
+		t.Errorf("Divide(20, 4) = %d; want %d", result, expected)
+	}
+}
+
+func TestDivideByZero(t *testing.T) {
+	_, err := Divide(10, 0)
+	if err == nil {
+		t.Errorf("Divide(10, 0) should return an error for division by zero")
+	}
+}
