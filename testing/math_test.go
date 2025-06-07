@@ -56,3 +56,11 @@ func TestDivideByZero(t *testing.T) {
 		t.Errorf("Divide(10, 0) should return an error for division by zero")
 	}
 }
+
+func TestPower(t *testing.T) {
+	result := Power(2, 3)
+	expected := 8.0
+	if result != expected {
+		t.Errorf("Power(2, 3) = %f; want %f", result, expected)
+	}
+}
