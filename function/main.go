@@ -59,3 +59,11 @@ func sumAll(nums ...int) int {
 	fmt.Println("Sum of many numbers:", sumAll(1, 2, 3, 4, 5))
 
 }
+// returns a function that adds a specific number
+func makeAdder(x int) func(int) int {
+	return func(y int) int {
+		return x + y
+	}
+}
+addFive := makeAdder(5)
+fmt.Println("Closure result:", addFive(10)) // 15
