@@ -47,4 +47,15 @@ func main() {
 
 	fmt.Printf("Hello , this value is from test2 func : %d \n" , test2)
 
+	// function that accepts any number of integers
+func sumAll(nums ...int) int {
+	total := 0
+	for _, n := range nums {
+		total += n
+	}
+	return total
+}
+
+	fmt.Println("Sum of many numbers:", sumAll(1, 2, 3, 4, 5))
+
 }
